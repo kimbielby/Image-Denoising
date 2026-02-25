@@ -23,7 +23,7 @@ Deep learning-based image denoising using a lightweight U-Net architecture train
 ### Installation
 ```bash
 # Clone repository
-git clone https://github.com/kimbielby/image-denoising.git
+git clone https://github.com/kimbielby/Image-Denoising.git
 cd image-denoising
 
 # Create virtual environment
@@ -59,6 +59,34 @@ jupyter notebook notebooks/01_training.ipynb
 
 # Or use the training pipeline directly
 python -c "from pipelines import run_training_pipeline; from configs import load_config; config = load_config('configs/default.yaml'); run_training_pipeline(config)"
+```
+
+### Pre-trained Model
+
+Download the pre-trained model from [Releases](https://github.com/kimbielby/Image-Denoising/releases/latest):
+
+**Option 1: Manual Download**
+1. Go to [Releases](https://github.com/kimbielby/Image-Denoising/releases/latest)
+2. Download `best_model.pth` (~30 MB)
+3. Place in `runs/best_model.pth`
+
+**Option 2: Command Line**
+```bash
+# Using wget
+wget https://github.com/kimbielby/Image-Denoising/releases/download/v1.0/best_model.pth -O runs/best_model.pth
+
+# Or using curl
+curl -L https://github.com/kimbielby/Image-Denoising/releases/download/v1.0/best_model.pth -o runs/best_model.pth
+```
+
+**Usage:**
+```python
+from models import UNet
+from utils.checkpoint_utils import load_checkpoint_inference
+
+# Load pre-trained model
+model = UNet(in_channels=3, out_channels=3, init_features=32)
+model = load_checkpoint_inference("runs/best_model.pth", model, device="cuda")
 ```
 
 ### Inference
@@ -256,8 +284,7 @@ MIT License - [LICENSE](LICENSE)
 ## 👤 Author
 
 Kim Bielby  
-GitHub: www.github.com/kimbielby  
-LinkedIn: www.linkedin.com/in/kimbielby 
+[GitHub](https://github.com/kimbielby) | [LinkedIn](https://linkedin.com/in/kimbielby)
 
 ## 🙏 Acknowledgments
 
