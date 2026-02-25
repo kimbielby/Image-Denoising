@@ -1,0 +1,66 @@
+paths:
+  og_images_root: ../data/images/og_images
+  inference_dir: ../data/images/inference
+  cropped_img_root: ../data/images/crops
+  ckpt_dir: ../runs
+
+dataset:
+  patch_size: 512
+  train_split: 0.7
+  valid_split: 0.9
+  num_inference_imgs: 8
+
+model:
+  name: UNet
+  in_channels: 3
+  out_channels: 3
+  init_features: 32
+
+loss:
+  name: MSELoss     # MSELoss or CombinedLoss
+  alpha: 0.8               # For CombinedLoss only
+
+preprocessing:
+  bright_threshold: 200.0
+  bright_copies: 5
+  random_augment: 50
+
+augmentation:
+  enabled: false    # Set to true to enable ColorJitter
+  brightness: 0.2
+  contrast: 0.2
+  saturation: 0.2
+  hue: 0.05
+
+train:
+  learning_rate: 1e-4
+  epochs: 200
+  batch_size: 16
+  num_workers: 0    # 0 for Windows (if it crashes), 4+ for Linux
+  save_every: 5
+  keep_last_k: 3
+  optimiser: Adam
+  resume_from: null
+  patience: 15      # Early stopping
+
+scheduler:
+  type: ReduceLROnPlateau
+  mode: min
+  factor: 0.5
+  patience: 5
+  min_lr: 1e-7
+
+validation:
+  val_every: 1                     # Validate every N epochs
+  save_comparisons: true  # Save visual comparisons
+
+test:
+  batch_size: 16
+  save_outputs: true
+
+inference:
+  tiled: true
+  tile_size: 512
+  overlap: 64
+  batch_size: 4
+
