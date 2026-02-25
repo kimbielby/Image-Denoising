@@ -1,1 +1,15 @@
 /.idea/
+runs/
+checkpoints/
+outputs/
+
+data/images/og_images/*
+data/images/crops/*
+data/images/inference/*
+!data/images/og_images/.gitkeep
+!data/images/crops/.gitkeep
+!data/images/inference/.gitkeep
+
+__pycache__/
+
+!.gitkeep
