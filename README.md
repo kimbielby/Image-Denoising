@@ -5,7 +5,7 @@ Deep learning-based image denoising using a lightweight U-Net architecture train
 ![Best and Worst Results](docs/images/best_worst_results.png)
 *Best denoising results (top row) and most challenging cases (bottom row) from test set*
 
-## 🎯 Key Results
+## Key Results
 
 | Metric | Value |
 |--------|-------|
@@ -18,7 +18,7 @@ Deep learning-based image denoising using a lightweight U-Net architecture train
 ### Major Achievement
 **Worst case improvement:** Bright/colourful images improved from 17-18 dB (baseline) to 23+ dB through targeted preprocessing augmentation — a **+6 dB gain** on previously failing cases.
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 ```bash
@@ -95,7 +95,7 @@ model = load_checkpoint_inference("runs/best_model.pth", model, device="cuda")
 jupyter notebook notebooks/03_inference.ipynb
 ```
 
-## 🔬 Project Highlights
+## Project Highlights
 
 ### The Challenge 
    - Initial training on 5,922 image pairs achieved 32.87 dB average PSNR
@@ -118,7 +118,7 @@ jupyter notebook notebooks/03_inference.ipynb
    - Required a significantly lower learning rate (3e-5 vs 1e-4) and showed training instability
    - MSELoss was chosen for production reliability 
 
-## 🏗️ Architecture
+## Architecture
 
 **Lightweight U-Net** (7.77M parameters, ~30 MB)
 - 4-level encoder-decoder with skip connections
@@ -144,7 +144,7 @@ Output (3, 512, 512)
 
 See [models/model.py](models/model.py) for implementation details.
 
-## 📊 Key Findings
+## Key Findings
 
 ### 1. Data Analysis
 - Initial training achieved good average metrics (32.87 dB) but had severe outliers (17-18 dB)
@@ -165,7 +165,7 @@ See [models/model.py](models/model.py) for implementation details.
 
 For detailed analysis, see [RESULTS.md](RESULTS.md).
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 image-denoising/
@@ -216,7 +216,7 @@ image-denoising/
 └── RESULTS.md                    # Detailed analysis and findings
 ```
 
-## 🔧 Configuration
+## Configuration
 
 All hyperparameters are configurable via YAML:
 
@@ -245,7 +245,7 @@ preprocessing:
 
 See [configs/default.yaml](configs/default.yaml) for all options.
 
-## 📦 Dataset
+## Dataset
 
 **Source**: [Smartphone Image Denoising Dataset](https://www.kaggle.com/datasets/rajat95gupta/smartphone-image-denoising-dataset)
 
@@ -260,7 +260,7 @@ See [configs/default.yaml](configs/default.yaml) for all options.
 - Validation: 1,692 image pairs
 - Test: 846 image pairs
 
-## 🔬 Training Details
+## Training Details
 
 - **Optimizer**: Adam
 - **Learning Rate**: 1e-4
@@ -271,22 +271,22 @@ See [configs/default.yaml](configs/default.yaml) for all options.
 - **Validation**: Every epoch
 - **Hardware**: NVIDIA GPU with 4-8GB VRAM
 
-## 🎓 References
+## References
 
 - **U-Net Architecture**: Ronneberger et al., "U-Net: Convolutional Networks for Biomedical Image Segmentation" (2015)
 - **Dataset**: [Smartphone Image Denoising Dataset](https://www.kaggle.com/datasets/rajat95gupta/smartphone-image-denoising-dataset)
 - **SSIM Loss**: Wang et al., "Image Quality Assessment: From Error Visibility to Structural Similarity" (2004)
 
-## 📄 License
+## License
 
 MIT License - [LICENSE](LICENSE)
 
-## 👤 Author
+## Author
 
 Kim Bielby  
 [GitHub](https://github.com/kimbielby) | [LinkedIn](https://linkedin.com/in/kimbielby)
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Dataset provided by Rajat Gupta on Kaggle
 

@@ -2,7 +2,7 @@
 
 Detailed analysis of the image denoising model performance, training process, and key findings.
 
-## 📊 Final Test Results
+## Final Test Results
 
 ### Overall Performance
 
@@ -48,7 +48,7 @@ Maximum:    0.9741
 
 ---
 
-## 🔬 Problem Discovery & Solution
+## Problem Discovery & Solution
 
 ### Initial Baseline Results
 
@@ -119,7 +119,7 @@ After augmentation:
 | Metric | Baseline | With Augmentation | Improvement |
 |--------|----------|-------------------|-------------|
 | **Average PSNR** | 32.87 dB | 33.95 dB | +1.08 dB |
-| **Worst Case PSNR** | 17.01 dB | 23.08 dB | **+6.07 dB** ✅ |
+| **Worst Case PSNR** | 17.01 dB | 23.08 dB | **+6.07 dB**  |
 | **PSNR Std** | 3.38 dB | 3.33 dB | -0.05 dB (more consistent) |
 | **Average SSIM** | 0.8261 | 0.8538 | +0.0277 |
 
@@ -134,7 +134,7 @@ Worst cases improved dramatically (+5-6 dB) while maintaining strong performance
 
 ---
 
-## 🧪 Experimental Findings
+## Experimental Findings
 
 ### Experiment 1: ColorJitter Augmentation
 
@@ -147,10 +147,10 @@ torch.clamp(output, 0.0, 1.0)  # Prevent out-of-range values
 ```
 
 **Results:**
-- ❌ Training diverged at epochs 4-7 across multiple runs
-- ❌ Even with conservative settings (0.2 vs 0.3)
-- ❌ Even with clamping to [0, 1] range
-- ❌ Loss would spike from 0.05 → 0.8+ suddenly
+- Training diverged at epochs 4-7 across multiple runs
+- Even with conservative settings (0.2 vs 0.3)
+- Even with clamping to [0, 1] range
+- Loss would spike from 0.05 → 0.8+ suddenly
 
 **Example failure pattern:**
 ```
@@ -175,11 +175,11 @@ learning_rate: 1e-4
 ```
 
 **Results:**
-- ✅ Stable training throughout
-- ✅ Smooth convergence
-- ✅ Good PSNR (33.95 dB)
-- ✅ Good SSIM (0.8538)
-- ✅ No training issues
+- Stable training throughout
+- Smooth convergence
+- Good PSNR (33.95 dB)
+- Good SSIM (0.8538)
+- No training issues
 
 **Training curve:** Steadily decreasing loss with no spikes
 
@@ -195,10 +195,10 @@ learning_rate: 3e-5  # Had to reduce from 1e-4
 ```
 
 **Results:**
-- ⚠️ Required 70% lower learning rate (3e-5 vs 1e-4)
-- ⚠️ Training instability at higher LR
-- ⚠️ Diverged at epochs 4-10 with LR=1e-4
-- ❌ Not tested to completion due to instability
+- Required 70% lower learning rate (3e-5 vs 1e-4)
+- Training instability at higher LR
+- Diverged at epochs 4-10 with LR=1e-4
+- Not tested to completion due to instability
 
 **Why it failed:**
 - SSIM loss has different gradient characteristics than MSE
@@ -209,7 +209,7 @@ learning_rate: 3e-5  # Had to reduce from 1e-4
 
 ---
 
-## 📈 Training Dynamics
+## Training Dynamics
 
 ### Best Training Run (Final Model)
 
@@ -243,7 +243,7 @@ Validation: Every epoch
 
 ---
 
-## 🎯 Best and Worst Examples
+## Best and Worst Examples
 
 ### Best Performing Images (PSNR > 40 dB)
 
@@ -275,7 +275,7 @@ Note that even the "worst" cases at 23+ dB show significant denoising compared t
 
 ---
 
-## 💡 Technical Findings 
+## Technical Findings 
 
 ### 1. Data Quality vs Model Complexity
 
@@ -309,7 +309,7 @@ Note that even the "worst" cases at 23+ dB show significant denoising compared t
 
 ---
 
-## 📉 Current Limitations
+## Current Limitations
 
 ### Performance Constraints 
 
@@ -335,7 +335,7 @@ Note that even the "worst" cases at 23+ dB show significant denoising compared t
 
 ---
 
-## 📊 Appendix: Complete Statistics
+## Appendix: Complete Statistics
 
 ### PSNR Detailed Statistics
 ```
