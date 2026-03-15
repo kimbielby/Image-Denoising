@@ -1,5 +1,3 @@
-import numpy as np
-
 from imports import *
 from PIL import UnidentifiedImageError
 

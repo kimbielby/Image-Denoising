@@ -1,4 +1,3 @@
-from imports import *
 from typing import Dict, Optional, Tuple
 
 def get_best_epoch(history: Dict) -> Optional[Tuple[int, float, float]]:
@@ -182,4 +181,3 @@ def compare_models(
     else:
         print("Models perform equally")
 
-    return

@@ -1,5 +1,4 @@
 from typing import Callable
-
 from configs import Config
 from imports import *
 from torch.utils.data import DataLoader, Dataset
